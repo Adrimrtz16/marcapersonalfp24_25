@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+
     Pantalla principal
-@endsection
+
+@stop
