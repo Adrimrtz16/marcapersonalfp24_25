@@ -1,35 +1,38 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\HomeController;
+    use App\Http\Controllers\ProyectosControler;
+    use App\Http\Controllers\ProyectosController;
 
-Route::get('/', function () {
-    return view('home');
-});
+    use Illuminate\Support\Facades\Route;
 
-Route::get('login', function() {
-    return view('auth.login');
-});
+    Route::get('/', [HomeController::class, 'getHome']);
 
-Route::get('logout', function() {
-    return 'Logout usuario';
-});
+    Route::get('login', function() {
+        return view('auth.login');
+    });
 
-Route::get('proyectos', function() {
-    return view('proyectos.index');
-});
+    Route::get('logout', function() {
+        return 'Logout usuario';
+    });
 
-Route::get('proyectos/show/{id}', function($id) {
-    return view('proyectos.show', array('id'=>$id));
-})->where('id', '[0-9]+');
+    Route::get('proyectos', [ProyectosControler::class, 'getIndex']);
 
-Route::get('proyectos/create', function() {
-    return view('proyectos.create');
-});
+    Route::get('proyectos/show/{id}', [ProyectosControler::class, 'getShow']
+    )->where('id', '[0-9]+');
 
-Route::get('proyectos/edit/{id}', function($id) {
-    return view('proyectos.edit', array('id'=>$id));
-})->where('id', '[0-9]+');
+    Route::get('proyectos/create', [ProyectosControler::class, 'getCreate']);
 
-Route::get('perfil/{id?}', function($id = null) {
-    return $id ? 'Visualizar el currículo de '. $id : 'Visualizar el currículo propio';
-})->where('id', '[0-9]*');
+    Route::get('proyectos/edit/{id}', function($id) {
+        return view('proyectos.edit', array('id'=>$id));
+    })->where('id', '[0-9]+');
+
+    Route::get('perfil/{id?}', function($id = null) {
+        return $id ? 'Visualizar el currículo de '. $id : 'Visualizar el currículo propio';
+    })->where('id', '[0-9]*');
+
+
+    Route::get('proyectos/show/{id}', [ProyectosControler::class, 'getShow']);
+
+
+    Route::get('proyectos/edit{id}', [ProyectosControler::class, 'getEdit']);
