@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProyectosControler extends Controller{
+class ProyectosController extends Controller{
 
-    public function getIndex() {
-        return view('proyectos.index',
-            array('proyectos' => $this->arrayProyectos));
+    public function getIndex()
+    {
+        return view('proyectos.index', array('proyectos' => $this->arrayProyectos));
     }
 
    public function getShow($id) {
@@ -18,6 +18,16 @@ class ProyectosControler extends Controller{
            ->with('id', $id);
     }
 
+    public function getCreate(){
+        return view('proyectos.create');
+    }
+
+    public function getEdit($id) {
+
+        return view('proyectos.edit')
+            ->with('proyecto', $this->arrayProyectos[$id])
+            ->with('id', $id);
+     }
     private $arrayProyectos = [
         [
             'docente_id' => 1,

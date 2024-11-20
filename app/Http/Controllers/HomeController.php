@@ -11,6 +11,6 @@ class HomeController extends Controller
 {
 public function getHome()
 {
-    return redirect()->action([ProyectosControler::class, 'getIndex']);
+    return redirect()->action([ProyectosController::class, 'getIndex']);
 }
 }
