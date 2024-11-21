@@ -6,20 +6,17 @@
 
     @for ($i=0; $i<count($curriculos); $i++)
 
-    <div classUcol- col-6-medium col-12-small">
+    <div class="col-4 col-6-medium col-12-small">
         <section class="box">
             <a href="#" class="image featured" title="SleaY, CC BY 4.0 &lt;https://creativecommons.org/licenses/by/4.0&gt;, via Wikimedia Commons"><img width="256" alt="Curriculum-vitae-warning-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Curriculum-vitae-warning-icon.svg/256px-Curriculum-vitae-warning-icon.svg.png"></a>
             <header>
                 <h3>Usuario {{ $curriculos[$i]['user_id'] }}</h3>
             </header>
             <p>
-            <!--
-                El siguiente código debe ser adaptado.
-                Una vez adaptado, elimina este comentario.
-            -->
-                <a href="http://github.com/2DAW-CarlosIII/{{ $curriculos[$i]['user_id'] }}">
-                    http://github.com/2DAW-CarlosIII/{{ $curriculos[$i]['user_id'] }}
-                </a>
+                <strong>Video Curriculum:</strong> <a href="{{ $curriculos[$i]['video_curriculum'] }}">{{ $curriculos[$i]['video_curriculum'] }}</a>
+            </p>
+            <p>
+                <strong>Texto Curriculum:</strong> {{ $curriculos[$i]['texto_curriculum'] }}
             </p>
             <footer>
                 <ul class="actions">
