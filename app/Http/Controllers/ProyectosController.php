@@ -28,7 +28,7 @@ class ProyectosController extends Controller
     public function getEdit($id)
     {
             return view('proyectos.edit')
-                ->with('proyecto', $this->arrayProyectos[$id])
+                ->with('proyecto', Proyecto::findOrFail($id))
                 ->with('id', $id);
     }
 

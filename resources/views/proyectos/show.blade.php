@@ -5,6 +5,7 @@
 @php
     $metadatos = unserialize($proyecto['metadatos'])
 @endphp
+
     <div class="row m-4">
 
         <div class="col-sm-4">
@@ -14,7 +15,7 @@
         </div>
         <div class="col-sm-8">
 
-            <h3><strong>Nombre: </strong>{{ $proyecto['nombre'] }}</h3>
+            <h3><strong>Nombre: </strong>{{ $proyecto -> nombre}}</h3>
             <h4><strong>Dominio: </strong>
                 <a href="http://github.com/2DAW-CarlosIII/{{ $proyecto['dominio'] }}">
                     http://github.com/2DAW-CarlosIII/{{ $proyecto['dominio'] }}
