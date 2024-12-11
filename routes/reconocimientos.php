@@ -10,5 +10,5 @@ Route::group(['prefix' => 'reconocimientos'], function(){
 
     Route::get('/create', [ReconocimientoController::class, 'getCreate']);
 
-    Route::get('/edit/{id}', [ReconocimientoController::class, 'getEdit']) ->where('id', '[0-9]+');
+    Route::get('/edit/{id}', [ReconocimientoController::class, 'getEdit'])->where('id', '[0-9]+');
 });

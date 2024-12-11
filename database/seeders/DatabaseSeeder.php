@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Proyecto;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,9 +27,18 @@ class DatabaseSeeder extends Seeder
             }
         }
 
+        Model::unguard();
+        Schema::disableForeignKeyConstraints();
+
+        $this->call(ReconocimientosTableSeeder::class);
+
+        Model::reguard();
+        Schema::enableForeignKeyConstraints();
+
         self::seedProyectos();
         $this->command->info('Tabla proyectos inicializada con datos!');
     }
+    
     private static function seedProyectos()
     {
         Proyecto::truncate();
