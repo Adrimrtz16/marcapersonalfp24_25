@@ -28,7 +28,7 @@ class ReconocimientoController extends Controller
     public function getEdit($id)
     {
         return view('reconocimientos.edit')
-            ->with('reconocimientos', Reconocimiento::findOrFail($id))
+            ->with('reconocimiento', Reconocimiento::findOrFail($id))
             ->with('id', $id);
     }
 

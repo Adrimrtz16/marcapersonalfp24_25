@@ -14,7 +14,7 @@
                     <li><strong>Estudiante ID:</strong> {{ $reconocimiento->estudiante_id }}</li>
                     <li><strong>Actividad ID:</strong> {{$reconocimiento->actividad_id }}</li>
                     <li><strong>Documento:</strong> {{ $reconocimiento->documento }}</li>
-                    <li><strong>Fecha:</strong> {{ $reconocimiento->fecha }}</li>
+                    <li><strong>Fecha:</strong> {{ $reconocimiento->timestamp }}</li>
                     <li><strong>Docente Validador:</strong> {{ $reconocimiento->docente_validador }}</li>
                 </ul>
 
