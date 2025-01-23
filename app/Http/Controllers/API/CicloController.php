@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\ReactAdminResponse;
 use App\Http\Resources\CicloResource;
 use App\Models\Ciclo;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class CicloController extends Controller
@@ -15,10 +17,10 @@ class CicloController extends Controller
      */
     public function index(Request $request)
     {
-        return CicloResource::collection(
-            Ciclo::orderBy($request->_sort ?? 'id', $request->_order ?? 'asc')
-            ->paginate($request->perPage)
-        );
+        $query = $request->query ?? Model::query();
+        $perPage = $request->perPage ?? 10;
+
+        return $query->paginate($perPage);
     }
 
     /**
@@ -62,7 +64,8 @@ class CicloController extends Controller
             return response()->json(null, 204);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => 'Error: ' . $e->getMessage()], 400);
+                'message' => 'Error: ' . $e->getMessage()
+            ], 400);
         }
     }
 }

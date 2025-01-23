@@ -28,6 +28,13 @@ class ReactAdminResponse
             $modelClassName = $request->route()->controller->modelclass;
             $response->header('X-Total-Count',$modelClassName::count());
         }
+
+        $query = $modelClassName::query();
+        
+        $query->orderBy($request->sort ?? 'id', $request->order ?? 'asc')
+        ->paginate($request->perPage);
+        $response->setData($query-get());
+
         try {
             if(is_callable([$response, 'getData'])) {
                 $responseData = $response->getData();
