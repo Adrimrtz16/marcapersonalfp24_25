@@ -66,4 +66,13 @@ class EmpresaController extends Controller
                 'message' => 'Error: ' . $e->getMessage()], 400);
         }
     }
+
+    public function count(Request $request){
+        $query =
+            $request->attributes->has('queryWithParameters') ?
+            $request->attributes->get('queryWithParameters') :
+            Empresa::query();
+            $count = $query->count();
+        return response()->json(['count: ' => $count]);
+    }
 }
