@@ -25,6 +25,9 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -33,6 +36,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+    ];
+
+    public static $filterColumns = [
+        'name',
+        'nombre',
+        'apellidos',
+        'email',
     ];
 
     /**
@@ -46,5 +56,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function curriculos() {
+
+        return $this->hasOne(Curriculo::class,'user_id');
     }
 }
