@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Proyecto extends Model
 {
@@ -30,6 +31,11 @@ class Proyecto extends Model
     public function setMetadatosAttribute($value)
     {
         $this->attributes['metadatos'] = json_encode($value);
+    }
+
+    public function ciclos(): BelongsToMany
+    {
+        return $this->belongsToMany(Ciclo::class, 'proyectos_ciclos');
     }
 
 }

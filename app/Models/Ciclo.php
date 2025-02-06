@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Ciclo extends Model
 {
@@ -19,4 +20,9 @@ class Ciclo extends Model
     ];
 
     public static $filterColumns = ['codCiclo', 'codFamilia', 'grado', 'nombre'];
+
+    public function proyectos(): BelongsToMany
+    {
+        return $this->belongsToMany(Proyecto::class, 'proyectos_ciclos');
+    }
 }
